@@ -6,7 +6,7 @@ E03 - Queries
 
 SELECT c.customer_id, c.customer_fname, c.customer_lname, COUNT(*) AS num_orders FROM orders o
 LEFT JOIN customers c ON o.order_customer_id = c.customer_id
-WHERE MONTH(o.order_date) = 1 AND YEAR(o.order_date) = 2014
+WHERE o.order_date >= '20140101' AND o.order_date < '20140201'
 GROUP BY o.order_customer_id, c.customer_id, c.customer_fname, c.customer_lname
 ORDER BY num_orders DESC, c.customer_id;
 GO
